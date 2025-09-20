@@ -68,6 +68,20 @@ public class ChessPiece {
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
         HashSet<ChessMove> moves = new HashSet<>();
-        return moves;
+        ChessPiece piece = board.getPiece(myPosition);
+        ChessRules rule = new ChessRules(board);
+        if (piece.getPieceType()== PieceType.ROOK){
+            return rule.getSlidingMoves(myPosition, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}});
+        } else if (piece.getPieceType()== PieceType.BISHOP){
+            return rule.getSlidingMoves(myPosition, new int[][]{{1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
+        } else if (piece.getPieceType()== PieceType.QUEEN){
+            return rule.getSlidingMoves(myPosition, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
+        } else if (piece.getPieceType()== PieceType.KING){
+            return rule.getSlidingMoves(myPosition, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
+        } else if (piece.getPieceType()== PieceType.KNIGHT){
+            return rule.getSlidingMoves(myPosition, new int[][]{{1, 2}, {-1, 2}, {1, -2}, {-1, -2}, {2, 1}, {-2, 1}, {2, -1}, {-2, -1}});
+        } else {
+            return rule.getPawnMoves(myPosition);
+        }
     }
 }

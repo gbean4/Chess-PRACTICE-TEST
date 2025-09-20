@@ -67,7 +67,7 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        HashSet<ChessMove> moves = new HashSet<>();
+//        HashSet<ChessMove> moves = new HashSet<>();
         ChessPiece piece = board.getPiece(myPosition);
         ChessRules rule = new ChessRules(board);
         if (piece.getPieceType()== PieceType.ROOK){
